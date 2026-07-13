@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>කාලකන්නියා - Official Site</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0b0c10;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Fullscreen Hero Background Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Background Image Section - Updated with Gemini_Generated_Image_soix4usoix4usoix.png */
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(11, 12, 16, 0.85)),
+                  url('Gemini_Generated_Image_soix4usoix4usoix.png') center/cover no-repeat;
+      z-index: 1;
+      filter: brightness(0.9);
+      transform: scale(1);
+      transition: transform 10s ease;
+    }
+
+    /* Subtle Ken Burns Zoom Animation on Image */
+    .hero:hover .hero-bg {
+      transform: scale(1.05);
+    }
+
+    /* Live Animated Canvas Overlay (Particle Glow Effect) */
+    #visualizerCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Content Area */
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 20px;
+      max-width: 800px;
+    }
+
+    h1.title {
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #66fcf1;
+      text-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+      margin-bottom: 10px;
+      animation: fadeInDown 1.5s ease;
+    }
+
+    p.subtitle {
+      font-size: 1.3rem;
+      color: #c5c6c7;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    /* Animated Sound Wave Graphic */
+    .sound-wave {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 40px;
+      gap: 6px;
+      margin-bottom: 30px;
+    }
+
+    .bar {
+      width: 6px;
+      height: 100%;
+      background-color: #45a29e;
+      border-radius: 3px;
+      animation: wave 1.2s ease-in-out infinite alternate;
+    }
+
+    .bar:nth-child(1) { animation-delay: 0.1s; }
+    .bar:nth-child(2) { animation-delay: 0.3s; }
+    .bar:nth-child(3) { animation-delay: 0.5s; }
+    .bar:nth-child(4) { animation-delay: 0.2s; }
+    .bar:nth-child(5) { animation-delay: 0.4s; }
+
+    @keyframes wave {
+      0% { height: 15%; opacity: 0.4; }
+      100% { height: 100%; opacity: 1; background-color: #66fcf1; box-shadow: 0 0 10px #66fcf1; }
+    }
+
+    /* Call to Action Button */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0b0c10;
+      background: #66fcf1;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(102, 252, 241, 0.4);
+    }
+
+    .btn:hover {
+      background: #ffffff;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+      transform: translateY(-3px);
+    }
+
+    /* Unreleased Section (Minimal Content Below Hero) */
+    .vault-section {
+      position: relative;
+      z-index: 3;
+      background: #0b0c10;
+      padding: 80px 20px;
+      text-align: center;
+      border-top: 1px solid #1f2833;
+    }
+
+    .vault-section h2 {
+      font-size: 2rem;
+      color: #66fcf1;
+      margin-bottom: 15px;
+    }
+
+    .vault-section p {
+      color: #c5c6c7;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1.title { font-size: 2.8rem; }
+      p.subtitle { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <!-- Live Particle Overlay Canvas -->
+    <canvas id="visualizerCanvas"></canvas>
+
+    <div class="hero-content">
+      <h1 class="title">කාලකන්නියා</h1>
+      <p class="subtitle">Unreleased Vault & Raw Acoustic Sounds</p>
+
+      <!-- Live Animated Music Bars -->
+      <div class="sound-wave">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <a href="#vault" class="btn">Explore the Music</a>
+    </div>
+  </section>
+
+  <!-- Unreleased Vault Section -->
+  <section id="vault" class="vault-section">
+    <h2>The Unreleased Archives</h2>
+    <p>
+      Music created straight from the heart—raw, authentic, and held close. 
+      Stay tuned as exclusive unreleased tracks and original creations are unveiled here.
+    </p>
+  </section>
+
+  <!-- Canvas Particle Animation Script -->
+  <script>
+    const canvas = document.getElementById('visualizerCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Floating embers / ambient light particles
+    const particles = [];
+    const particleCount = 45;
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2 + 1,
+        speedY: -(Math.random() * 0.8 + 0.2),
+        speedX: (Math.random() - 0.5) * 0.5,
+        alpha: Math.random() * 0.6 + 0.2
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.y += p.speedY;
+        p.x += p.speedX;
+
+        if (p.y < 0) {
+          p.y = height;
+          p.x = Math.random() * width;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(102, 252, 241, ${p.alpha})`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#66fcf1';
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+
+</body>
+</html>
